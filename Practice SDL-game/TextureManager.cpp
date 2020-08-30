@@ -12,6 +12,16 @@ bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
     //create texture from surface n image
     SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer,pTempSurface);
     SDL_FreeSurface(pTempSurface);
+
+    //everything is ok, add texture to map
+    if (pTexture!=0)
+    {
+        m_textureMap[id] = pTexture;
+        cout << "init image successful" << endl;
+        return true;
+    }
+    cout << "smth went wrong" << endl;
+    return false;
 }
 
 void TextureManager::draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip)

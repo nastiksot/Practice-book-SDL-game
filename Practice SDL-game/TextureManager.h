@@ -12,7 +12,7 @@ using namespace std;
 
 class TextureManager {
 public:
-	//use to refer to the texture, and the renderer we want to use
+	//renderer surface n image
 	bool load(string filename, string id, SDL_Renderer* pRenderer);
 
 	//draw function

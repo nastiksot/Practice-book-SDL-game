@@ -56,13 +56,13 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
 	cout << "Init success" << endl;
 	//everything inited successfully, start the looping
 
-	//load the image to the surface
-	SDL_Surface* pTempSurface = IMG_Load("..//assets//animate-alpha.png");
-	
+	////load the image to the surface
+	//SDL_Surface* pTempSurface = IMG_Load("..//assets//animate-alpha.png");
+	//
 
-	//create texture from surface n image
-	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-	SDL_FreeSurface(pTempSurface);//texture is ready
+	////create texture from surface n image
+	//m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+	//SDL_FreeSurface(pTempSurface);//texture is ready
 
 	//get the size of image to draw n set correctly width and height
 	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //texture stored in m_sourceRectangle
