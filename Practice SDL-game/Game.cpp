@@ -57,8 +57,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
 	//everything inited successfully, start the looping
 
 	//load the image to the surface
-	/*SDL_Surface* pTempSurface = IMG_Load("D:\\Programming\\C++\\C++ Projects\\SDL-game\\assets\\animate.bmp");*/
-	SDL_Surface* pTempSurface = IMG_Load(".//animate-alpha.png");
+	SDL_Surface* pTempSurface = IMG_Load("..//assets//animate-alpha.png");
 	
 
 	//create texture from surface n image
@@ -86,7 +85,8 @@ void Game::render()
 
 	//get renderer sie of img
 	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
+	//horisontal reflection
+	//SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
 	//draw to the screen
 	SDL_RenderPresent(m_pRenderer);
 }
