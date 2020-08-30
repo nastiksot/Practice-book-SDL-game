@@ -68,11 +68,14 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
 	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //texture stored in m_sourceRectangle
 
 	//set start pos of animate img
-	m_destinationRectangle.x = m_sourceRectangle.x = 0;
-	m_destinationRectangle.y = m_sourceRectangle.y = 0;
+
+	//m_destinationRectangle.x = m_sourceRectangle.x = 0;
+	//m_destinationRectangle.y = m_sourceRectangle.y = 0;
+
 	//set size of frame
-	m_destinationRectangle.w = m_sourceRectangle.w = 128;
-	m_destinationRectangle.h = m_sourceRectangle.h = 82;
+
+	//m_destinationRectangle.w = m_sourceRectangle.w = 128;
+	//m_destinationRectangle.h = m_sourceRectangle.h = 82;
 
 	m_bRunning = true;
 	return true;

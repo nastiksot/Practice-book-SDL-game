@@ -24,10 +24,24 @@ bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
     return false;
 }
 
-void TextureManager::draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip)
+void TextureManager::draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
+    SDL_Rect srcRect;
+    SDL_Rect destRect;
+    
+    //set start pos of animate img
+    srcRect.x = 0;
+    srcRect.y = 0;
+
+    //set size of frame
+    srcRect.w = srcRect.w = width;
+    srcRect.h = srcRect.h = height;
+    destRect.x = x;
+    destRect.y = y;
+
+    SDL_RenderCopyEx(pRenderer,m_textureMap[id],&srcRect,&destRect,0,0,flip);
 }
 
-void TextureManager::drawFrame(string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip)
+void TextureManager::drawFrame(string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
 }
