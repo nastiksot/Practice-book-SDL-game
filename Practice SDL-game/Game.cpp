@@ -57,8 +57,9 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
 	//everything inited successfully, start the looping
 
 	//load the image to the surface
-	SDL_Surface* pTempSurface = SDL_LoadBMP("D:\\Programming\\C++\\C++ Projects\\SDL-game\\assets\\animate.bmp");
-
+	/*SDL_Surface* pTempSurface = IMG_Load("D:\\Programming\\C++\\C++ Projects\\SDL-game\\assets\\animate.bmp");*/
+	SDL_Surface* pTempSurface = IMG_Load(".//animate-alpha.png");
+	
 
 	//create texture from surface n image
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
