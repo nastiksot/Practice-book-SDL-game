@@ -13,7 +13,7 @@ using namespace std;
 class TextureManager {
 public:
 	//renderer surface n image
-	bool load(string filename, string id, SDL_Renderer* pRenderer);
+	bool load(string fileName, string id, SDL_Renderer* pRenderer);
 
 	//draw function
 	void draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer,

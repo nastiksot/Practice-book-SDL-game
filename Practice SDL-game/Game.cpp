@@ -53,30 +53,10 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
 		cout << "SDL init failed" << endl;
 		return false;
 	}
+	m_textureManager.load("..//assets//animate.png", "animate", m_pRenderer);//given the texture ID "animate"
+
 	cout << "Init success" << endl;
-	//everything inited successfully, start the looping
-
-	////load the image to the surface
-	//SDL_Surface* pTempSurface = IMG_Load("..//assets//animate-alpha.png");
-	//
-
-	////create texture from surface n image
-	//m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-	//SDL_FreeSurface(pTempSurface);//texture is ready
-
-	//get the size of image to draw n set correctly width and height
-	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //texture stored in m_sourceRectangle
-
-	//set start pos of animate img
-
-	//m_destinationRectangle.x = m_sourceRectangle.x = 0;
-	//m_destinationRectangle.y = m_sourceRectangle.y = 0;
-
-	//set size of frame
-
-	//m_destinationRectangle.w = m_sourceRectangle.w = 128;
-	//m_destinationRectangle.h = m_sourceRectangle.h = 82;
-
+	
 	m_bRunning = true;
 	return true;
 }
@@ -85,12 +65,8 @@ void Game::render()
 {
 	//clear the renderer to draw color
 	SDL_RenderClear(m_pRenderer);
-
-	//get renderer sie of img
-	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-	//horisontal reflection
-	//SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
-	//draw to the screen
+	m_textureManager.draw("animate",0,0,128,82,m_pRenderer);
+	m_textureManager.drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
 	SDL_RenderPresent(m_pRenderer);
 }
 
@@ -128,7 +104,7 @@ void Game::handleEvents()
 void Game::update()
 {
 	//change img position by axis x
-	m_sourceRectangle.x = 128 * int((SDL_GetTicks() / 100) % 6);
+	m_currentFrame = int((SDL_GetTicks() / 100) % 6);
 }
 
 Game::~Game()
