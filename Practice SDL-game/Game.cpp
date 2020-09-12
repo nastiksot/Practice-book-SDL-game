@@ -1,4 +1,6 @@
 #include "Game.h"
+#include "TextureManager.h"
+#include <SDL_image.h>
 #include <iostream>
 
 using namespace std;
@@ -53,8 +55,8 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
 		cout << "SDL init failed" << endl;
 		return false;
 	}
-	m_textureManager.load("..//assets//animate.png", "animate", m_pRenderer);//given the texture ID "animate"
-
+	m_textureManager.load("../assets/animate-alpha.png", "animate", m_pRenderer);//given the texture ID "animate"
+	
 	cout << "Init success" << endl;
 	
 	m_bRunning = true;

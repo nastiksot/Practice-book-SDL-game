@@ -4,11 +4,13 @@ bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
 {
     //load the image to the surface
     SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
-    if (pTempSurface == 0) 
+     if (pTempSurface == 0) 
     {
-        cout << "initialization surface failed" << endl;
+       cout << "initialization surface failed" << endl;
         return false;
     }
+    
+        cout << "initialization surface success" << endl;
     //create texture from surface n image
     SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer,pTempSurface);
     SDL_FreeSurface(pTempSurface);
@@ -22,7 +24,8 @@ bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
     }
     cout << "smth went wrong" << endl;
     return false;
-}
+    }
+
 
 void TextureManager::draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
