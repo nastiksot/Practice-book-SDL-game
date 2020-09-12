@@ -1,5 +1,7 @@
 #include <SDL.h>
+#include <SDL_image.h>
 #include "Game.h"
+#include "TextureManager.h"
 
 
 Game* g_game = 0;
