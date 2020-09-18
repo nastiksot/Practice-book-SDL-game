@@ -5,13 +5,6 @@
 
 using namespace std;
 
-Game::Game()
-{
-	m_bRunning = false;
-	m_pWindow = 0;
-	m_pRenderer = 0;
-}
-
 bool Game::init(const char* title, int xpos, int ypos, int height, int width, bool fullscreen)
 {
 	//attempt to initializate SDL
@@ -55,11 +48,14 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
 		cout << "SDL init failed" << endl;
 		return false;
 	}
-	m_textureManager.load("../assets/animate-alpha.png", "animate", m_pRenderer);//given the texture ID "animate"
-	
 	cout << "Init success" << endl;
-	
 	m_bRunning = true;
+	//to load texture
+	if (!TheTextureManager::Instance()->load("../assets/animate-alpha.png", "animate", m_pRenderer))//given the texture ID "animate"
+	{
+		return false;
+	}
+	
 	return true;
 }
 
@@ -67,8 +63,9 @@ void Game::render()
 {
 	//clear the renderer to draw color
 	SDL_RenderClear(m_pRenderer);
-	m_textureManager.draw("animate",0,0,128,82,m_pRenderer);
-	m_textureManager.drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+	//to draw texture
+	TheTextureManager::Instance()->draw("animate",0,0,128,82,m_pRenderer);
+	TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
 	SDL_RenderPresent(m_pRenderer);
 }
 
@@ -78,11 +75,6 @@ void Game::clean()
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
-}
-
-bool Game::running()
-{
-	return m_bRunning;
 }
 
 
@@ -107,8 +99,4 @@ void Game::update()
 {
 	//change img position by axis x
 	m_currentFrame = int((SDL_GetTicks() / 100) % 6);
-}
-
-Game::~Game()
-{
 }

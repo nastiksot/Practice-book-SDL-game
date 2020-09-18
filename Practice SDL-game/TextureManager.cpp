@@ -1,6 +1,17 @@
 #include "TextureManager.h"
 #include "SDL_image.h"
 
+TextureManager* TextureManager::s_pInstance = 0;
+TextureManager* TextureManager::Instance()
+{
+	if (s_pInstance == 0)
+	{
+		s_pInstance = new TextureManager();
+		return s_pInstance;
+	}
+	return s_pInstance;	
+}
+
 bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
 {
 	//load the image to the surface

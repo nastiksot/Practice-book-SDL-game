@@ -11,19 +11,26 @@
 using namespace std;
 
 class TextureManager {
+
+	//do private constructor for singletone
+	TextureManager() {}
+	static TextureManager* s_pInstance;
 public:
+	//function keep or create objects
+	static TextureManager* Instance();
 	//renderer surface n image
 	bool load(string fileName, string id, SDL_Renderer* pRenderer);
 
-	//draw function
+	//draw static image
 	void draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer,
 			  SDL_RendererFlip = SDL_FLIP_NONE);
 	
-	//drawFrame function
+	//draw dynamic image
 	void drawFrame(string id, int x, int y, int width, int height, int currentRow, int currentFrame, 
 				   SDL_Renderer* pRenderer, SDL_RendererFlip = SDL_FLIP_NONE);
 
 	//create map which contain 2 definition Texture onjects and string keys
 	map<string, SDL_Texture*> m_textureMap;
 };
+typedef TextureManager TheTextureManager;
 #endif //TextureManager_H
