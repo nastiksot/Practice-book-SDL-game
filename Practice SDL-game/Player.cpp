@@ -20,8 +20,8 @@ void Player::update()
 {
 	//GameObject::update();
 	//animate opposite direction
-	m_x = -1;
-	//m_currentFrame = int((SDL_GetTicks() / 100) % 6);//make obj active
+	m_x--;
+	m_currentFrame = int((SDL_GetTicks() / 100) % 6);//make obj active
 	//m_y = 20;
 	cout << "update player" << endl;
 }

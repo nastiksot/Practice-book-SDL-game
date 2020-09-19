@@ -5,6 +5,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <string> 
+#include <vector> 
 
 
 using namespace std;
@@ -22,6 +23,8 @@ protected:
 
 	int m_width;
 	int m_height;
+
+	vector<GameObject*> m_gameObjects;
 
 public: 
 	void load(int x, int y, int width, int height, string textureID );
