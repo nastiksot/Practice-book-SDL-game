@@ -4,9 +4,11 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <vector>
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "Enemy.h"
 
 
 class Game
@@ -21,21 +23,25 @@ private:
 	//SDL texture variable
 	SDL_Texture* m_pTexture;
 
-	GameObject m_go;
-	Player m_player;
 	
+	vector<GameObject*> m_gameObjects;
+	GameObject* m_go;
+	Player* m_player;
+	Enemy* m_enemy;
+	
+
 public:
 	Game() {};
 	bool init(const char* title, int xpos, int ypos, int height, int width, bool fullscreen);
 	void render();
-	//clean up SDL
-	void clean();
 	//return m_bRunning
 	bool running() { return m_bRunning; }
-	//allow to close aplication
-	void handleEvents();
 	//for changing frame img
 	void update();
+	//allow to close aplication
+	void handleEvents();
+	//clean up SDL
+	void clean();
 
 	~Game(){};
 };

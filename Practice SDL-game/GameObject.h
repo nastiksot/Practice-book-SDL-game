@@ -24,13 +24,13 @@ protected:
 	int m_width;
 	int m_height;
 
-	vector<GameObject*> m_gameObjects;
+	
 
 public: 
-	void load(int x, int y, int width, int height, string textureID );
-	void draw(SDL_Renderer* pRenderer);
-	void update();
-	void clean();
+	virtual void load(int x, int y, int width, int height, string textureID );
+	virtual void draw(SDL_Renderer* pRenderer);
+	virtual void update();
+	virtual void clean();
 
 };
 
