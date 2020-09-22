@@ -1,22 +1,24 @@
 #pragma once
-#ifndef Player_H
-#define Player_H
+#ifndef PLAYER_H
+#define PLAYER_H
 #include <iostream>
 #include <string>
 #include "GameObject.h"
-class Player:public GameObject 
+#include "SDLGameObject.h"
+#include "LoaderParams.h"
+class Player:public SDLGameObject 
 {
 
 public:
 	Player();
-	void load(int x, int y, int width, int height, string textureID);
-	void draw(SDL_Renderer* pRenderer);
-	void update();
-	void clean();
-	~Player();
+	Player(LoaderParams* pParams);
+	virtual void draw()override;
+	virtual void update()override;
+	virtual void clean()override;
+	virtual ~Player();
 
 
 };
 
-#endif // Player_H
+#endif // PLAYER_H
 

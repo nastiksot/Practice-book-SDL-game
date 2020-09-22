@@ -4,15 +4,14 @@ Player::Player()
 {
 }
 
-void Player::load(int x, int y, int width, int height, string textureID)
+Player::Player(LoaderParams* pParams):SDLGameObject(pParams)
 {
-	GameObject::load(x, y, width, height, textureID);
 }
 
-void Player::draw(SDL_Renderer* pRenderer)
+void Player::draw()
 {
 	//draw player
-	GameObject::draw(pRenderer);
+	SDLGameObject::draw();
 }
 
 void Player::update()
@@ -25,8 +24,8 @@ void Player::update()
 
 void Player::clean()
 {
-	GameObject::clean();
-	cout << "clean player" << endl;
+	//SDLGameObject::clean();
+	cout << "Clean Player" << endl;
 }
 
 Player::~Player()

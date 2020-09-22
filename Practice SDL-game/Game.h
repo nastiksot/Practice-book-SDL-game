@@ -1,6 +1,6 @@
 #pragma once
-#ifndef Game_H
-#define Game_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -9,11 +9,15 @@
 #include "GameObject.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "SDLGameObject.h"
+#include "LoaderParams.h"
 
 
 class Game
 {
 private:
+	Game() {};
+
 	bool m_bRunning;
 	int m_currentFrame;
 
@@ -23,15 +27,14 @@ private:
 	//SDL texture variable
 	SDL_Texture* m_pTexture;
 
-	
 	vector<GameObject*> m_gameObjects;
-	GameObject* m_go;
-	Player* m_player;
-	Enemy* m_enemy;
+
 	
+	static Game* s_pInstance;
 
 public:
-	Game() {};
+	static Game* Instance();
+	SDL_Renderer* getRenderer()const { return m_pRenderer; }
 	bool init(const char* title, int xpos, int ypos, int height, int width, bool fullscreen);
 	void render();
 	//return m_bRunning
@@ -46,4 +49,5 @@ public:
 	~Game(){};
 };
 
-#endif // Game_H
+typedef Game TheGame;
+#endif // GAME_H

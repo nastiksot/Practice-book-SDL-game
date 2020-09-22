@@ -5,14 +5,18 @@
 #include <string>
 #include <SDL.h>
 #include "GameObject.h"
+#include "LoaderParams.h"
+#include "SDLGameObject.h"
 
-class Enemy:public GameObject
+class Enemy:public SDLGameObject
 {
 public:
-	void load(int x, int y, int width, int height, string textureID );
-	void draw(SDL_Renderer* pRenderer);
-	void update();
-	void clean();
+	Enemy(const LoaderParams* pParams);
+
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
+	virtual ~Enemy() {}
 };
 
 #endif //ENEMY_H
